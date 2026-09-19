@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스웨디시 vs 아로마 샵 상권별 구인 전략 | 테라피 인사이드</title>
+    <title>테라피 인사이드 | 마사지구인구직 실전연구소</title>
     
     <!-- 구글 서치콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="2co9phNI2ylkB9uuINzpbZ51cQ9KZV5CjCATd5V3L5Q" />
@@ -18,17 +18,18 @@
             padding: 40px 15px;
         }
         .wrapper {
-            max-width: 820px;
+            max-width: 1040px;
             margin: 0 auto;
         }
-        /* 최상단 고정 배너 (수정 금지 고정 영역) */
+
+        /* 1. 최상단 공식 포털 배너 (영구 고정) */
         .portal-card {
             background: #ffffff;
             padding: 30px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         .portal-card h1 {
             font-size: 22px;
@@ -44,7 +45,7 @@
             display: inline-block;
             background-color: #007bff;
             color: #ffffff;
-            padding: 12px 24px;
+            padding: 12px 26px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
@@ -55,43 +56,138 @@
             background-color: #0056b3;
         }
 
-        /* 블로그 본문 컨테이너 */
-        .article-card {
-            background: #ffffff;
-            padding: 45px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        /* 2. 섹션 헤더 & 1줄 2열 그리드 레이아웃 */
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a202c;
+            margin-bottom: 20px;
+            padding-left: 5px;
         }
-        .article-header {
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 25px;
-            margin-bottom: 30px;
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* PC 기준 1줄 2열 */
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* 포스팅 미리보기 카드 */
+        .post-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+        }
+        .post-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         .category-badge {
-            display: inline-block;
-            background-color: #e2e8f0;
-            color: #4a5568;
+            align-self: flex-start;
+            background-color: #ebf8ff;
+            color: #2b6cb0;
             padding: 4px 10px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             border-radius: 4px;
             margin-bottom: 12px;
         }
-        .article-title {
-            font-size: 28px;
+        .card-title {
+            font-size: 19px;
             color: #1a202c;
-            line-height: 1.4;
+            line-height: 1.45;
             margin: 0 0 12px 0;
+            font-weight: 700;
         }
-        .article-meta {
+        .card-desc {
+            font-size: 14.5px;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .btn-read {
+            display: inline-block;
+            background-color: #f7fafc;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            padding: 10px 16px;
+            text-align: center;
+            border-radius: 6px;
             font-size: 14px;
-            color: #a0aec0;
+            font-weight: 600;
         }
 
-        /* 썸네일 이미지 박스 */
+        /* 3. 본문 읽기 팝업 모달창 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            padding: 40px 15px;
+            box-sizing: border-box;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: 0 auto;
+            max-width: 820px;
+            border-radius: 14px;
+            padding: 45px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #a0aec0;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #2d3748;
+        }
+
+        /* 글 본문 서식 */
+        .article-title {
+            font-size: 27px;
+            color: #1a202c;
+            line-height: 1.4;
+            margin: 10px 0 15px 0;
+        }
+        .article-meta {
+            font-size: 13.5px;
+            color: #a0aec0;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
         .thumb-box {
             text-align: center;
-            margin: 30px 0 35px 0;
+            margin: 25px 0 35px 0;
         }
         .thumb-box img {
             max-width: 100%;
@@ -99,15 +195,13 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
-
-        /* 본문 폰트 & 스타일 */
         h2 {
             font-size: 20px;
             color: #1a202c;
             border-left: 4px solid #007bff;
             padding-left: 12px;
             margin-top: 40px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         h3 {
             font-size: 17px;
@@ -128,8 +222,6 @@
             margin-bottom: 8px;
             font-size: 15.5px;
         }
-
-        /* 강조 인용구 박스 */
         .highlight-box {
             background-color: #f7fafc;
             border-left: 4px solid #cbd5e0;
@@ -138,8 +230,6 @@
             margin: 20px 0;
             font-size: 15px;
         }
-
-        /* 비교 테이블 */
         .table-wrap {
             overflow-x: auto;
             margin: 25px 0;
@@ -147,7 +237,6 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: left;
             font-size: 14.5px;
         }
         th {
@@ -161,13 +250,13 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* 본문 글 전용 사이트 연결 배너 박스 */
+        /* 1번 글 전용 마사지인포 배너 */
         .post-cta-banner {
             margin-top: 45px;
             background: linear-gradient(135deg, #ebf8ff 0%, #f0fdf4 100%);
             border: 1px solid #bee3f8;
             border-radius: 12px;
-            padding: 28px 24px;
+            padding: 26px 22px;
             text-align: center;
         }
         .post-cta-banner h3 {
@@ -176,34 +265,37 @@
             margin-top: 0;
             margin-bottom: 8px;
         }
-        .post-cta-banner p {
-            font-size: 14.5px;
-            color: #4a5568;
-            margin-bottom: 18px;
-        }
         .btn-site {
             display: inline-block;
             background-color: #2563eb;
             color: #ffffff;
-            padding: 12px 26px;
+            padding: 12px 24px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 15px;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-            transition: all 0.2s ease;
-        }
-        .btn-site:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-1px);
+            font-size: 14.5px;
+            margin-top: 10px;
         }
 
-        /* 하단 푸터 */
+        /* 푸터 */
         .footer {
             text-align: center;
             font-size: 13px;
             color: #a0aec0;
             margin-top: 40px;
+        }
+
+        /* 모바일 최적화 반응형 */
+        @media (max-width: 768px) {
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                padding: 30px 20px;
+            }
+            .article-title {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -211,26 +303,61 @@
 
 <div class="wrapper">
 
-    <!-- [고정 영역] 1. 최상단 MassageJobs Korea 공식 포털 배너 (기존 그대로 유지) -->
+    <!-- [고정] 1. 최상단 공식 포털 안내 배너 -->
     <div class="portal-card">
         <h1>MassageJobs Korea | 공식 포털</h1>
         <p>대한민국 대표 테라피스트 구인구직, 마사지구인 전문 플랫폼 안내</p>
         <a href="https://litt.ly/massagemgr" class="btn-portal" target="_blank">공식 웹사이트 바로가기</a>
     </div>
 
-    <!-- 2. 블로그 본문 포스팅 영역 -->
-    <div class="article-card">
-        <div class="article-header">
-            <span class="category-badge">원장님 채용 실전 가이드</span>
-            <h1 class="article-title">스웨디시 vs 아로마 샵 상권별 구인 전략: 번화가와 주거 상권의 공고 타깃팅 차이점</h1>
-            <div class="article-meta">발행처: 테라피 인사이드 (마사지구인구직 실전연구소)</div>
+    <div class="section-title">최신 실전 채용 & 샵 운영 칼럼</div>
+
+    <!-- 2. 1줄 2열 카드 그리드 -->
+    <div class="post-grid">
+        
+        <!-- 카드 1: 스웨디시 vs 아로마 구인 전략 (thumb1.png 적용) -->
+        <div class="post-card" onclick="openModal('post1')">
+            <img src="./thumb1.png" alt="스웨디시 vs 아로마 샵 상권별 구인 전략" onerror="this.style.display='none'">
+            <div class="card-body">
+                <span class="category-badge">상권별 채용 전략</span>
+                <h2 class="card-title">스웨디시 vs 아로마 샵 상권별 구인 전략: 번화가와 주거 상권 차이점</h2>
+                <p class="card-desc">매장의 주력 코스와 상권 특성을 결합하여 지원자의 라이프스타일에 맞춘 타깃팅 노하우 및 급여 시뮬레이션 제시법을 정리합니다.</p>
+                <div class="btn-read">칼럼 전문 읽기 →</div>
+            </div>
         </div>
+
+        <!-- 카드 2: 관리사 휴게실 인테리어 & 복지 세팅 (thumb2.png 적용) -->
+        <div class="post-card" onclick="openModal('post2')">
+            <img src="./thumb2.png" alt="관리사 휴게실 인테리어 & 복지 세팅" onerror="this.style.display='none'">
+            <div class="card-body">
+                <span class="category-badge">매장 복지 & 인테리어</span>
+                <h2 class="card-title">관리사 휴게실 인테리어와 복지 세팅: 사진 보고 바로 지원하는 디테일 4가지</h2>
+                <p class="card-desc">지원자가 공고 사진을 확인하자마자 당일 지원을 결심하게 만드는 독립 휴식 부스, 전용 샤워 동선 등 4대 핵심 포인트를 공개합니다.</p>
+                <div class="btn-read">칼럼 전문 읽기 →</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 테라피 인사이드 | MassageJobs Korea. All rights reserved.
+    </div>
+
+</div>
+
+<!-- [모달 팝업 1] 스웨디시 vs 아로마 샵 상권별 구인 전략 전문 (본문 썸네일 thumb1.png 적용) -->
+<div id="post1" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('post1')">&times;</span>
+        <span class="category-badge">상권별 채용 전략</span>
+        <h1 class="article-title">스웨디시 vs 아로마 샵 상권별 구인 전략: 번화가와 주거 상권의 공고 타깃팅 차이점</h1>
+        <div class="article-meta">발행처: 테라피 인사이드 (마사지구인구직 실전연구소)</div>
 
         <p>마사지 및 테라피 샵을 운영하는 원장님들이 마주하는 가장 까다로운 난제 중 하나는 <strong>‘우리 매장에 딱 맞는 인재를 안정적으로 수급하는 일’</strong>입니다. 수많은 매장이 높은 채용 플랫폼 비용을 지불하고 유사한 급여 조건을 내걸지만, 어떤 매장은 공고를 올리자마자 지원자가 몰리는 반면 어떤 매장은 몇 주째 조회수만 오를 뿐 면접 문의조차 들어오지 않습니다.</p>
 
         <p>이러한 성패를 가르는 본질적인 요인은 단순히 페이의 높낮이가 아닙니다. 바로 <strong>‘매장의 주력 관리 프로그램(스웨디시 vs 아로마)’</strong>과 <strong>‘매장이 위치한 상권의 특성(오피스·번화가 vs 주거·항아리 상권)’</strong>의 상관관계를 면밀히 분석하고, 지원자의 라이프스타일에 맞추어 구인 공고를 정교하게 타깃팅했는가의 차이입니다.</p>
 
-        <!-- 1번 소제목 바로 위: 썸네일 이미지 -->
+        <!-- 1번 글 본문 썸네일 thumb1.png -->
         <div class="thumb-box">
             <img src="./thumb1.png" alt="스웨디시 vs 아로마 샵 상권별 구인 전략 인포그래픽">
         </div>
@@ -289,7 +416,6 @@
         </div>
 
         <h2>4. 지원율을 3배 끌어올리는 공고 디테일 작성법</h2>
-        
         <h3>① 상권 인프라를 '지원자의 실제 하루 일과'로 번역하기</h3>
         <p>단순히 "역세권 위치"라고 적기보다, <em>"역삼역 4번 출구 도보 3분 거리이며, 인근 IT 직장인 단골 예약이 대부분이라 매너가 깔끔하여 팁과 지명이 자연스럽게 형성됩니다."</em>와 같이 지원자의 근무 체감도로 번역해 주어야 합니다.</p>
 
@@ -307,19 +433,88 @@
         <h3>④ 잡무 분리와 룸 케어 지원 범위 명시하기</h3>
         <p>"관리사님은 오직 고객 케어와 본인의 컨디션 관리에만 집중하세요. 룸 청소와 빨래, 시트 정리는 전담 직원이 도맡아 진행합니다."라는 한 줄이 공고에 들어가는 순간, 타 샵 대비 압도적인 지원율 우위를 점할 수 있습니다.</p>
 
-        <!-- [포스팅 전용 영역] 본문 글 하단: 특정 구인구직 사이트(마사지인포) 연결 배너 -->
+        <!-- 1번 글 하단 마사지인포 링크 배너 -->
         <div class="post-cta-banner">
             <h3>💡 마사지구인구직 사이트 "마사지인포"</h3>
             <p>근무 조건과 급여 정보가 투명하게 공개된 검증된 테라피 샵 구인 정보를 확인해 보세요.</p>
             <a href="https://massageinfo.co.kr" class="btn-site" target="_blank">👉 마사지인포에서 검증된 마사지 구인구직 정보 확인하기</a>
         </div>
     </div>
-
-    <div class="footer">
-        © 2026 테라피 인사이드 | MassageJobs Korea. All rights reserved.
-    </div>
-
 </div>
+
+<!-- [모달 팝업 2] 관리사 휴게실 인테리어와 복지 세팅 전문 (thumb2.png 적용 / 하단 외부 링크 없음) -->
+<div id="post2" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('post2')">&times;</span>
+        <span class="category-badge">매장 복지 & 인테리어</span>
+        <h1 class="article-title">관리사 휴게실 인테리어와 복지 세팅: 지원자들이 사진 보고 바로 지원하는 디테일 4가지</h1>
+        <div class="article-meta">발행처: 테라피 인사이드 (마사지구인구직 실전연구소)</div>
+
+        <p>마사지 및 에스테틱 샵 구인 시장에서 수많은 원장님이 간과하는 치명적인 실수가 있습니다. 바로 구인 공고에 <strong>‘고객용 로비와 복도, 룸 인테리어 사진만 가득 채워 넣는 것’</strong>입니다.</p>
+
+        <p>화려한 대리석 바닥, 고급스러운 샹들리에, 호텔급 접견실은 손님을 모으는 데는 결정적인 요소일지 몰라도, 하루의 절반 이상을 그 공간에서 보내며 일해야 하는 테라피스트(관리사)의 마음을 움직이지는 못합니다. 현장에서 일하는 실력파 관리사들이 구인 공고를 볼 때 가장 유심히 살피며, 심지어 매장 지원 여부를 최종 결정짓는 핵심 공간은 다름 아닌 <strong>‘관리사 전용 휴게실과 대기 공간’</strong>입니다.</p>
+
+        <!-- 2번 글 본문 썸네일 thumb2.png -->
+        <div class="thumb-box">
+            <img src="./thumb2.png" alt="관리사 휴게실 인테리어 & 복지 세팅 인포그래픽">
+        </div>
+
+        <h2>1. 프라이버시가 완벽히 보장되는 '독립 휴식 공간 및 개인 락커'</h2>
+        <p>체력 소모가 극심한 직무 특성상, 타임 사이에 잠시 눕거나 눈을 붙일 때 타인의 시선이나 발소리로부터 보호받는 것은 기본 중의 기본입니다.</p>
+        <ul>
+            <li><strong>완전 밀폐형 파티션 또는 암막 커튼 구획:</strong> 오픈된 공간에 소파 하나 덩그러니 놓인 휴게실은 휴식이 아닌 감정 소모를 낳습니다. 개별 리클라이너나 데이베드 사이에 천장 레일형 암막 커튼이나 가벽을 설치해 사생활을 방해받지 않는 독립 부스 구조를 완성하세요.</li>
+            <li><strong>도어락 장착 개인 대형 락커:</strong> 출퇴근 사복, 개인 화장품, 귀중품을 안전하게 보관할 수 있는 넉넉한 사이즈의 개인 락커는 관리사에게 '내 자리가 확실히 보장되어 있다'는 소속감과 심리적 안정감을 줍니다.</li>
+        </ul>
+
+        <h2>2. 감정 노동을 녹여주는 '엔터테인먼트 & 공기 순환 환경'</h2>
+        <p>룸 안에서 극도로 긴장된 집중 상태를 유지한 관리사들은 대기 시간만큼은 바깥세상과 연결되어 스트레스를 풀 수 있는 환경을 원합니다.</p>
+        <ul>
+            <li><strong>스마트 TV 및 OTT(넷플릭스·유튜브 프리미엄) 완비:</strong> 휴게실에 벽걸이 스마트 TV를 설치하고 매장 계정으로 OTT 서비스를 상시 지원하면 대기 시간의 무료함이 단번에 해소됩니다. 공고 사진에 TV 화면과 편안한 쿠션이 함께 담기는 것만으로도 지원율이 급상승합니다.</li>
+            <li><strong>강력한 환기 시스템 및 대용량 공기청정기:</strong> 오일과 크림, 체취가 섞이기 쉬운 테라피 샵 환경에서 환기가 제대로 되지 않는 밀폐된 휴게실은 피로를 유발합니다. 공조 환풍기를 별도로 보강하고, 플라즈마 공기청정기와 탈취기를 상시 가동하는 모습을 보여주는 것이 큰 신뢰를 줍니다.</li>
+        </ul>
+
+        <h2>3. 체력 소모를 보충하는 '무제한 카페테리아 & 간식 스테이션'</h2>
+        <p>테라피스트는 육체 노동 강도가 높은 전문 직군입니다. 불규칙한 예약 시간 때문에 제때 식사를 챙겨 먹지 못하는 경우가 빈번하므로 간편한 에너지 보충 시설은 큰 감동을 줍니다.</p>
+        <ul>
+            <li><strong>캡슐 커피 머신 및 티 라인업:</strong> 단순 믹스커피가 아닌 캡슐 커피 머신과 얼음 정수기(제빙기)의 존재는 매장의 세심한 배려 수준을 가늠하는 척도가 됩니다.</li>
+            <li><strong>단백질 및 비타민 중심 스낵 바:</strong> 에너지바, 컵라면, 두유, 견과류, 비타민 음료를 항상 채워두고 "식사 거르지 마시라고 매장에서 100% 무상 지원합니다"라는 멘트와 함께 냉장고 오픈 사진을 첨부하세요. 확실한 복지 증거가 됩니다.</li>
+        </ul>
+
+        <h2>4. 고객 동선과 철저히 차단된 '관리사 전용 단독 샤워실 & 파우더룸'</h2>
+        <p>가장 많은 원장님이 놓치는 부분이 바로 <strong>‘샤워실과 화장실의 동선 분리’</strong>입니다.</p>
+        <ul>
+            <li><strong>손님 샤워실과의 완전한 분리:</strong> 관리 후 몸을 씻어내야 할 때 손님과 마주칠까 조마조마해야 하는 환경은 장기 근속을 가로막는 대표적인 불만 요소입니다.</li>
+            <li><strong>관리사 전용 파우더룸 세팅:</strong> 휴게실 내부에 관리사 전용 샤워 부스를 설치하고 고풍량 드라이어, 고급 바디워시, 기초 스킨케어 제품을 비치해 두세요. 면접 온 지원자에게 이 공간을 보여주는 순간 당일 출근 확정을 이끌어낼 수 있습니다.</li>
+        </ul>
+
+        <div class="highlight-box" style="margin-top: 35px; border-left-color: #2b6cb0; background-color: #f7fafc;">
+            <strong>맺으며: 인테리어는 손님용, 디테일은 직업인을 위한 투자입니다</strong><br>
+            관리사의 휴식 퀄리티는 곧 다음 타임 고객에게 전달되는 손끝의 정성으로 직결됩니다. 구인 공고를 올리실 때 로비 사진은 1~2장으로 줄이고, 잘 정돈된 휴게실 파티션과 쾌적한 전용 휴식 공간 사진을 전면에 배치해 보세요.
+        </div>
+    </div>
+</div>
+
+<script>
+    // 팝업 열기 함수
+    function openModal(id) {
+        document.getElementById(id).style.display = "block";
+        document.body.style.overflow = "hidden"; // 배경 스크롤 방지
+    }
+
+    // 팝업 닫기 함수
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    // 배경 클릭 시 팝업 닫기
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+</script>
 
 </body>
 </html>
