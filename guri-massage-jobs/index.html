@@ -54,22 +54,60 @@
             padding: 45px 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-        .breadcrumb {
+        /* 최상단 메인 목록 복귀 버튼 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .btn-back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background-color: #edf2f7;
+            color: #4a5568;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-back-top:hover {
+            background-color: #e2e8f0;
+            color: #2d3748;
+        }
+        .nav-category {
             font-size: 13.5px;
             color: #718096;
-            margin-bottom: 20px;
-        }
-        .breadcrumb a {
-            color: #2b6cb0;
-            text-decoration: none;
+            font-weight: 500;
         }
         h1.post-title {
             font-size: 26px;
             color: #1a202c;
             line-height: 1.45;
-            margin: 0 0 16px 0;
+            margin: 0 0 14px 0;
             font-weight: 800;
             word-break: keep-all;
+        }
+        /* 제목 바로 밑 태그 5종 영역 */
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .tag-badge {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
         .post-meta {
             font-size: 13px;
@@ -122,12 +160,6 @@
             border-bottom: 2px solid #ebf8ff;
             font-weight: 700;
         }
-        h3 {
-            font-size: 17px;
-            color: #2b6cb0;
-            margin: 22px 0 10px 0;
-            font-weight: 700;
-        }
         p, li {
             font-size: 15.5px;
             color: #4a5568;
@@ -146,22 +178,28 @@
             background-color: #f7fafc;
             border: 1px solid #e2e8f0;
             border-radius: 10px;
-            padding: 26px 28px;
+            padding: 24px 26px;
             margin-top: 45px;
         }
         .cta-section h3 {
-            margin-top: 0;
+            margin: 0 0 12px 0;
             color: #1a202c;
             font-size: 16.5px;
+            font-weight: 700;
         }
         .cta-link-item {
             margin-bottom: 10px;
             font-size: 15px;
             font-weight: 600;
+            color: #2d3748;
         }
         .cta-link-item a {
             color: #007bff;
             text-decoration: underline;
+        }
+        .cta-link-item.plain-text {
+            color: #4a5568;
+            font-weight: 500;
         }
         /* 내부 연계 추천 박스 */
         .related-box {
@@ -183,20 +221,6 @@
             color: #15803d;
             text-decoration: underline;
         }
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 22px;
-            background-color: #edf2f7;
-            color: #4a5568;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .back-btn:hover {
-            background-color: #e2e8f0;
-        }
         @media (max-width: 768px) {
             body { padding: 15px 10px; }
             .wrapper { padding: 25px 20px; }
@@ -207,11 +231,23 @@
 <body>
 
 <div class="wrapper">
-    <div class="breadcrumb">
-        <a href="../">홈 (테라피 인사이드)</a> &gt; 상권별 채용 전략 &gt; 구리시
+    <!-- 1) 최상단: 블로그 메인 목록으로 돌아가기 버튼 -->
+    <div class="top-nav">
+        <a href="../" class="btn-back-top">← 블로그 메인 목록으로 돌아가기</a>
+        <span class="nav-category">테라피 인사이드 &gt; 상권별 채용 전략</span>
     </div>
 
     <h1 class="post-title">경기 마사지구인구직: 구리 돌다리·수택동 상권 완벽 분석과 테라피스트 안심 일자리 가이드 (2026)</h1>
+
+    <!-- 2) 제목 바로 밑: 5대 핵심 태그 -->
+    <div class="post-tags">
+        <span class="tag-badge">#경기 마사지구인구직</span>
+        <span class="tag-badge">#경기 마사지구인</span>
+        <span class="tag-badge">#경기 마사지알바</span>
+        <span class="tag-badge">#경기 스웨디시구인</span>
+        <span class="tag-badge">#경기 스웨디시알바</span>
+    </div>
+
     <div class="post-meta">작성일: 2026년 10월 16일 | 카테고리: 상권별 채용 전략 | 테라피 인사이드 연구팀</div>
 
     <div class="featured-img-wrap">
@@ -278,28 +314,24 @@
         잠실·강동 방면 직장인 고객이 많은 만큼, 퇴근 후 뭉친 목과 어깨, 견갑골 라인을 정성껏 풀어주는 맞춤 케어 매너를 보여주면 빠르게 고정 단골을 확보할 수 있습니다.
     </p>
 
-    <!-- 하단 공식 채용 플랫폼 안내 (5대 핵심 롱테일 키워드 적용) -->
+    <!-- 3) 하단 공식 채용 안내: 요청대로 3줄 구성 / 1번 줄 마사지인포 링크 연결 / 2,3번 줄 일반 텍스트 처리 -->
     <div class="cta-section">
         <h3>🔍 2026년 경기도 전역 안심 테라피스트 일자리가 궁금하다면?</h3>
         <p style="font-size: 14.5px; color: #718096; margin-bottom: 16px;">
             과장된 조건 없이 실제 검증을 마친 100% 건전 매장 정보와 투명한 당일 정산 일자리를 확인해 보세요.
         </p>
-        <div class="cta-link-item">👉 <a href="https://massageinfo.co.kr" target="_blank" rel="noopener">실시간 경기 마사지구인구직 검증 채용관 바로가기 (마사지인포)</a></div>
-        <div class="cta-link-item">👉 <a href="https://massagezone.co.kr" target="_blank" rel="noopener">내 주변 맞춤 경기 마사지구인 샵 위치 지도 검색하기 (마사지존)</a></div>
-        <div class="cta-link-item">👉 <a href="https://massagemanager.net" target="_blank" rel="noopener">초보자도 안심하는 경기 마사지알바 및 테라피스트 실무 가이드 (마사지매니저)</a></div>
-        <div class="cta-link-item">👉 <a href="https://massageinfo.co.kr" target="_blank" rel="noopener">경기 스웨디시구인 100% 당일 정산 안심 공고 확인하기</a></div>
-        <div class="cta-link-item">👉 <a href="https://massagezone.co.kr" target="_blank" rel="noopener">내 주변 맞춤 경기 스웨디시알바 샵 위치 지도 검색하기</a></div>
+        <div class="cta-link-item">👉 <a href="https://massageinfo.co.kr/employer?region=%EA%B2%BD%EA%B8%B0" target="_blank" rel="noopener">실시간 경기 마사지구인구직 검증 채용관 바로가기 (마사지인포)</a></div>
+        <div class="cta-link-item plain-text">👉 내 주변 맞춤 경기 마사지구인 샵 위치 지도 검색하기 (마사지존)</div>
+        <div class="cta-link-item plain-text">👉 초보자도 안심하는 경기 마사지알바 및 테라피스트 실무 가이드 (마사지매니저)</div>
     </div>
 
-    <!-- 요청하신 파주 운정 편 연계 추천 박스 -->
+    <!-- 하단 타 블로그 연계 추천 박스 (파주 운정 편) -->
     <div class="related-box">
         <p>💡 함께 읽어보면 좋은 경기권 취업 가이드</p>
         <a href="https://sonogongtv.tistory.com/8" target="_blank" rel="noopener">
             👉 경기 마사지구인구직: 파주 운정신도시 상권 완벽 분석과 테라피스트 안심 취업 실전 가이드 (2026) 바로가기
         </a>
     </div>
-
-    <a href="../" class="back-btn">← 블로그 메인 목록으로 돌아가기</a>
 </div>
 
 </body>
